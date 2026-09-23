@@ -1,0 +1,18 @@
+/* mobile dropdown */
+
+#navbar-collapse {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#navbar-collapse .list-group {
+  margin-bottom: 0;
+}
+
+/* tall section */
+
+.menu-section {
+  background-color: #cccccc;
+  min-height: 1000px;
+  padding: 30px 15px;
+}
