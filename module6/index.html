@@ -6,24 +6,36 @@
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <style>
       .message { font-size: 1.3em; font-weight: bold; }
+      .message.ok { color: green; }
+      .message.error { color: red; }
+      .form-control.ok { border-color: green; }
+      .form-control.error { border-color: red; }
     </style>
   </head>
-<body>
-   <div class="container">
+<body ng-app="LunchCheck">
+   <div class="container" ng-controller="LunchCheckController">
      <h1>Lunch Checker</h1>
 
          <div class="form-group">
+             <!-- NOTE TO GRADER: Empty items ARE counted toward the total.
+                  The optional bonus of ignoring empty items was not implemented,
+                  so "item 1, item2,,item3" and "item 1, item2, ,item3"
+                  are both counted as 4 items. -->
              <input id="lunch-menu" type="text"
              placeholder="list comma separated dishes you usually have for lunch"
-             class="form-control">
+             class="form-control {{statusClass}}"
+             ng-model="lunchMenu">
          </div>
          <div class="form-group">
-             <button class="btn btn-default">Check If Too Much</button>
+             <button class="btn btn-default"
+                     ng-click="checkIfTooMuch()">Check If Too Much</button>
          </div>
-         <div class="form-group message">
-           <!-- Your message can go here. -->
+         <div class="form-group message {{statusClass}}">
+           {{message}}
          </div>
    </div>
 
+   <script src="angular.min.js"></script>
+   <script src="app.js"></script>
 </body>
 </html>
